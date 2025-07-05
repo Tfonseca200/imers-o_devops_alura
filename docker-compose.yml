@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    # Constrói a imagem a partir do Dockerfile no diretório atual
+    build: .
+    # Mapeia a porta 8000 do host para a porta 8000 do contêiner
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual no contêiner para permitir hot-reloading e persistir o DB
+    volumes:
+      - .:/app
+    # O comando para iniciar a aplicação é pego do Dockerfile, que já está correto.
+    # CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
